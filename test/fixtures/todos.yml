@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: MyText
+  date: 2025-06-29
+  time: 2025-06-29 12:12:58
+  status: false
+
+two:
+  task: MyText
+  date: 2025-06-29
+  time: 2025-06-29 12:12:58
+  status: false

@@ -1,0 +1,48 @@
+<% if user_signed_in? %>
+  <% content_for :title, "Todos" %>
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Todos</h1>
+    <%= link_to "Add", new_todo_path, class: "btn btn-primary" %>
+  </div>
+
+
+  <div id="todos">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Task No</th>
+          <th scope="col">Title</th>
+          <th scope="col">Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% counter = 1 %>
+        <% @todos.each do |todo| %>
+          <% if todo.user_id == current_user.id %>
+            <tr>
+              <th scope="row"><%= counter %></th>
+              <td><%= todo.title %></td>
+              <td>
+                <% if todo.status %>
+                  <p> Completed </p>
+                <% else %>
+                  <p> Not Completed </p>
+                <% end %>
+                </td>
+              <td><%= link_to "View", todo %></td>
+              <% counter+=1 %>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <br/>
+  <h1 class="text-center"> Welcome to To Do List Web App</h1>
+  <br/>
+  <p class="lead">Stay organized and boost your productivity with TaskFlow — your personal to-do list manager. 
+    Add tasks, set priorities, and track your progress all in one place. Whether you're planning your day 
+    or managing a big project, TaskFlow helps you get things done.</p>
+<% end %>

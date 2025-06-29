@@ -1,0 +1,13 @@
+<% content_for :title, "Editing todo" %>
+
+<h1>Editing todo</h1>
+
+<%= render "form", todo: @todo %>
+
+<br>
+
+<div>
+  <%= link_to "View", @todo, class:"btn btn-secondary" %> 
+  <br><br>
+  <%= link_to "Back", todos_path, class:"btn btn-secondary" %>
+</div>

@@ -1,0 +1,32 @@
+<div class="jumbotron">
+  <h1 class="display-4 text-center text-secondary"> <%= @todo.title %> </h1>
+  <h3 class="text-primary">Task</h3>
+  <p class="lead ml-5"> <%= @todo.task %> </p>
+  <h3 class="text-primary">Date</h3>
+  <% if @todo.date? %>
+    <p class="lead ml-5"> <%= @todo.date.strftime("%d-%m-%Y") %> </p>
+  <% end %>
+  <h3 class="text-primary">Time</h3>
+  <% if @todo.time? %>
+  <p class="lead ml-5">
+    <%= @todo.time.in_time_zone("Asia/Karachi").strftime("%I:%M %p") %>
+  </p>
+  <% end %>
+  <h3 class="text-primary">Status</h3>
+
+  <% if @todo.status %>
+    <p class="lead ml-5 text-success"> Completed </p>
+  <% else %>
+    <p class="lead ml-5 text-warning"> Pending </p>
+  <% end %>
+
+
+  <div class="d-flex align-items-center mt-2 ">
+    <%= link_to "Edit", edit_todo_path(@todo), class: "btn btn-outline-primary mr-2" %>
+    <%= link_to "Back", todos_path, class: "btn btn-outline-secondary mr-2" %>
+    <%= button_to "Delete", @todo, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+    <% if !@todo.status %>
+      <%= button_to "Mark", mark_done_todo_path(@todo), method: :patch, class: "btn btn-outline-primary ml-2" %>
+    <% end %>
+  </div>
+</div>

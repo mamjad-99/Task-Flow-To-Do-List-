@@ -1,0 +1,21 @@
+<div class="container text-center mt-5">
+  <h1 class="display-4 mb-4">Welcome to TaskFlow!</h1>
+  <p class="lead mb-4">
+    Your personal to-do list manager to help you stay organized and productive.
+  </p>
+
+  <p>
+    Whether you're planning your day or managing big projects, TaskFlow makes it easy to
+    add, track, and complete your tasks — all in one place.
+  </p>
+
+  <div class="mt-5">
+    <% if user_signed_in? %>
+      <h3>Hello, <%= current_user.email %>!</h3>
+      <%= link_to "View Your Todos", todos_path, class: "btn btn-primary btn-lg mt-3" %>
+    <% else %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success btn-lg mx-2" %>
+      <%= link_to "Log In", new_user_session_path, class: "btn btn-outline-primary btn-lg mx-2" %>
+    <% end %>
+  </div>
+</div>
